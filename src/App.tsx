@@ -6,7 +6,7 @@ import { HeroHeader } from "./components/HeroHeader";
 import { CategoryNav } from "./components/CategoryNav";
 import { DishCard } from "./components/DishCard";
 import { CartDrawer } from "./components/CartDrawer";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Image as ImageIcon, Sparkles } from "lucide-react";
 
 export const App: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -298,17 +298,32 @@ export const App: React.FC = () => {
                 >
                   {/* Banner de Categoría */}
                   <div className="category-banner">
-                    <img
-                      className="category-banner-img"
-                      src={category.image}
-                      alt={category.name}
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80";
-                      }}
-                    />
-                    <div className="category-banner-overlay"></div>
+                    {category.image ? (
+                      <>
+                        <img
+                          className="category-banner-img"
+                          src={category.image}
+                          alt={category.name}
+                          onError={(e) => {
+                            (e.target as HTMLElement).style.display = "none";
+                          }}
+                        />
+                        <div className="category-banner-overlay"></div>
+                      </>
+                    ) : (
+                      <div className="category-placeholder-backdrop">
+                        <div className="category-placeholder-grid-pattern"></div>
+                        <div className="category-placeholder-badge">
+                          <ImageIcon size={15} />
+                          <span>Acá iría la imagen de categoría</span>
+                        </div>
+                      </div>
+                    )}
                     <div className="category-banner-content">
+                      <div className="category-badge-chip">
+                        <Sparkles size={13} />
+                        <span>Categoría</span>
+                      </div>
                       <h2>{category.name}</h2>
                       <p>{category.description}</p>
                     </div>

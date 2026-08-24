@@ -1,189 +1,239 @@
 {
   "categories": [
     {
-      "id": "especialidades-marinas",
-      "name": "Especialidades Marinas",
-      "description": "El auténtico sabor del mar: ceviches marinados al instante y chicharrones ultra crocantes",
-      "image": "/images/ceviche_mixto.png"
+      "id": "ceviches-leche-tigre",
+      "name": "Ceviches & Leche de Tigre",
+      "description": "Pescados y mariscos frescos marinados al instante con puro limón, ají limo y sazón de la casa",
+      "image": ""
     },
     {
-      "id": "platos-de-fondo",
-      "name": "Platos Calientes & Arroces",
-      "description": "Salteados al wok con gran potencia de sabor marinero, guisos e infusiones a la olla",
-      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80"
+      "id": "chicharrones-frituras",
+      "name": "Chicharrones & Frituras",
+      "description": "Crocantes al punto perfecto, servidos con yucas doradas, chifles y zarza criolla",
+      "image": ""
     },
     {
-      "id": "piqueos-entradas",
-      "name": "Piqueos & Entradas",
-      "description": "Bocados del mar frescos e intensos para empezar la experiencia de la mejor manera",
-      "image": "https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&w=800&q=80"
+      "id": "sudados-sopas",
+      "name": "Sudados, Guisos & Sopas",
+      "description": "Reconstituyentes caldos y guisos marineros a la olla con chicha de jora y finas hierbas",
+      "image": ""
     },
     {
-      "id": "bebidas-refrescos",
-      "name": "Bebidas & Refrescos",
-      "description": "Refrescantes acompañantes helados ideales para resaltar el sabor marino",
-      "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80"
+      "id": "duos-trios-arroces",
+      "name": "Dúos, Tríos & Arroces Marinos",
+      "description": "Las mejores combinaciones y arroces salteados con mixtura selecta de mariscos",
+      "image": ""
     }
   ],
   "items": [
     {
-      "id": "ceviche-pescado",
-      "category": "especialidades-marinas",
-      "name": "Ceviche de Pescado",
-      "description": "Dados de pescado fresco del día marinados al momento en puro jugo de limón de pica, ají limo, cebolla roja crujiente, camote dulce glaseado, choclo desgranado y cancha chulpe frita.",
-      "price": 30.00,
-      "image": "/images/ceviche_mixto.png",
-      "labels": ["El Más Pedido", "Fresco", "Picante"],
+      "id": "leche-de-tigre",
+      "category": "ceviches-leche-tigre",
+      "name": "Leche de Tigre",
+      "description": "Potente concentrado marino preparado al momento con dados de pescado fresco, chicharrón crocante, canchita chulpe y choclo desgranado. (Personal S/ 10.00 | Doble S/ 20.00)",
+      "price": 10.00,
+      "image": "",
+      "labels": ["Popular", "Fresco", "Picante al gusto"],
+      "available": true
+    },
+    {
+      "id": "ceviche-simple",
+      "category": "ceviches-leche-tigre",
+      "name": "Ceviche Simple (Pescado)",
+      "description": "Fresquísimos trozos de pescado del día curtidos en jugo de limón recién exprimido, ají limo, cebolla en pluma, camote glaseado, choclo y canchita.",
+      "price": 25.00,
+      "image": "",
+      "labels": ["Clásico Marino", "Recomendado"],
       "available": true
     },
     {
       "id": "ceviche-mixto",
-      "category": "especialidades-marinas",
+      "category": "ceviches-leche-tigre",
       "name": "Ceviche Mixto",
-      "description": "Pescado fresco combinado con jugosos mariscos (pulpo, langostino, calamar y pota) marinados en potente leche de tigre de la casa con ají limo, camote y choclo desgranado.",
-      "price": 35.00,
-      "image": "/images/ceviche_mixto.png",
-      "labels": ["Especialidad", "Plato Estrella"],
+      "description": "Combinación perfecta de pescado fresco y mariscos seleccionados (pulpo, langostino, calamar) marinados en potente leche de tigre.",
+      "price": 30.00,
+      "image": "",
+      "labels": ["Plato Estrella", "Especialidad"],
+      "available": true
+    },
+    {
+      "id": "ceviche-rocoto",
+      "category": "ceviches-leche-tigre",
+      "name": "Ceviche en Salsa de Rocoto",
+      "description": "Pescado fresco bañado en una deliciosa crema cremosa y picantita de rocoto norteño, con camote dulce, choclo tierno y cancha.",
+      "price": 28.00,
+      "image": "",
+      "labels": ["Cremoso", "Picantito"],
+      "available": true
+    },
+    {
+      "id": "ceviche-carretillero",
+      "category": "ceviches-leche-tigre",
+      "name": "Ceviche Carretillero",
+      "description": "El favorito de siempre: Ceviche fresco coronado con una generosa porción de chicharrón de pota/pescado crocante y canchita dorada.",
+      "price": 30.00,
+      "image": "",
+      "labels": ["El Favorito", "2 en 1"],
       "available": true
     },
     {
       "id": "chicharron-pescado",
-      "category": "especialidades-marinas",
+      "category": "chicharrones-frituras",
       "name": "Chicharrón de Pescado",
-      "description": "Crujientes trozos de filete de pescado dorados a la perfección en rebozado crujiente, acompañados de yucas doradas, zarza criolla jugosa y salsa tártara de la casa.",
-      "price": 32.00,
-      "image": "/images/chicharron.png",
-      "labels": ["Crocante", "Popular"],
+      "description": "Bocados crujientes de filete de pescado dorados a la perfección, servidos con yucas fritas, salsa tártara artesanal y zarza criolla.",
+      "price": 28.00,
+      "image": "",
+      "labels": ["Ultra Crocante", "Familiar"],
       "available": true
     },
     {
       "id": "chicharron-mixto",
-      "category": "especialidades-marinas",
+      "category": "chicharrones-frituras",
       "name": "Chicharrón Mixto",
-      "description": "Generosa combinación de trozos de pescado frito y calamares/mariscos rebozados súper crocantes, servido con yucas doradas, salsa tártara artesanal y abundante zarza criolla.",
-      "price": 38.00,
-      "image": "/images/chicharron.png",
+      "description": "Mixtura marina crocante con trozos de pescado y mariscos rebozados, acompañados de yucas doradas y salsa tártara de la casa.",
+      "price": 30.00,
+      "image": "",
       "labels": ["Recomendado", "Para Compartir"],
       "available": true
     },
     {
-      "id": "duo-marino",
-      "category": "especialidades-marinas",
-      "name": "Dúo Marino",
-      "description": "La combinación perfecta e infaltable de la costa: Ceviche fresco de pescado + Chicharrón de pescado bien crocante con su cancha chulpe y yucas doradas.",
-      "price": 36.00,
-      "image": "/images/duo_marino.png",
-      "labels": ["2 en 1", "El Favorito"],
+      "id": "jalea-mixta",
+      "category": "chicharrones-frituras",
+      "name": "Jalea Mixta",
+      "description": "Fuente marina con generosos mariscos y filete de pescado rebozados y crocantes, coronada con abundante sarza criolla y tártara.",
+      "price": 40.00,
+      "image": "",
+      "labels": ["Especialidad", "Bien Servido"],
       "available": true
     },
     {
-      "id": "causa-acevichada",
-      "category": "especialidades-marinas",
-      "name": "Causa Acevichada",
-      "description": "Suave masa de papa amarilla sazonada con ají amarillo y limón de pica, rellena de pulpa de cangrejo/pollo y coronada con un fresco ceviche marino en salsa acevichada cremosa.",
-      "price": 28.00,
-      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Gourmet", "Popular"],
+      "id": "cabrilla-frita",
+      "category": "chicharrones-frituras",
+      "name": "Cabrilla Frita",
+      "description": "Pescado entero de cabrilla frito al punto dorado y crujiente, servido con arroz blanco graneado, yucas doradas y zarza criolla.",
+      "price": 25.00,
+      "image": "",
+      "labels": ["Pescado Entero", "Tradicional"],
+      "available": true
+    },
+    {
+      "id": "chita-frita",
+      "category": "chicharrones-frituras",
+      "name": "Chita Frita",
+      "description": "Exquisita chita entera dorada y crocante por fuera, con carne tierna y jugosa por dentro. Acompañada de arroz blanco, yucas y sarza criolla.",
+      "price": 40.00,
+      "image": "",
+      "labels": ["Gourmet", "Pescado Fino"],
+      "available": true
+    },
+    {
+      "id": "sudado-trambollo",
+      "category": "sudados-sopas",
+      "name": "Sudado de Trambollo",
+      "description": "Tradicional trambollo cocido a fuego lento con tomate, cebolla, ají amarillo, chicha de jora, culantro y yucas tiernas.",
+      "price": 30.00,
+      "image": "",
+      "labels": ["Reconstituyente", "A la Olla"],
+      "available": true
+    },
+    {
+      "id": "sudado-congrio",
+      "category": "sudados-sopas",
+      "name": "Sudado de Congrio",
+      "description": "Delicioso congrio fresco en su jugo concentrado con finas hierbas aromáticas, vino blanco, tomate, cebolla y guarnición de yuca.",
+      "price": 25.00,
+      "image": "",
+      "labels": ["Sabor Intenso", "Tradición"],
+      "available": true
+    },
+    {
+      "id": "sudado-cabrilla",
+      "category": "sudados-sopas",
+      "name": "Sudado de Cabrilla",
+      "description": "Cabrilla entera cocida en su salsa marinera con fondo de pescado, chicha de jora, ajíes norteños, cebollas y yucas sancochadas.",
+      "price": 20.00,
+      "image": "",
+      "labels": ["Económico", "Nutritivo"],
+      "available": true
+    },
+    {
+      "id": "sudado-tollo",
+      "category": "sudados-sopas",
+      "name": "Sudado de Tollo",
+      "description": "Tierno filete de tollo en concentrado caldo marino con verduras salteadas, culantro fresco y porción de arroz con yuca.",
+      "price": 20.00,
+      "image": "",
+      "labels": ["Ligero", "Saludable"],
+      "available": true
+    },
+    {
+      "id": "guisada",
+      "category": "sudados-sopas",
+      "name": "Pescado a la Guisada",
+      "description": "Sabroso guiso casero de pescado al jugo con papas o yucas, sazón criolla tradicional y arroz blanco.",
+      "price": 20.00,
+      "image": "",
+      "labels": ["Sabor Casero", "Criollo"],
+      "available": true
+    },
+    {
+      "id": "chilcano",
+      "category": "sudados-sopas",
+      "name": "Chilcano Marino",
+      "description": "Caldo caliente y reconfortante de cabezas y espinazos de pescado, aromatizado con kion, apio, culantro, limón y canchita serrana.",
+      "price": 15.00,
+      "image": "",
+      "labels": ["Levantamuertos", "Reconfortante"],
+      "available": true
+    },
+    {
+      "id": "parihuela",
+      "category": "sudados-sopas",
+      "name": "Parihuela Especial",
+      "description": "La reina de las sopas marinas: Concentrado potente a base de cangrejo, mixtura de mariscos, filete de pescado, ají panca y chicha de jora.",
+      "price": 40.00,
+      "image": "",
+      "labels": ["Fuerza Marina", "Afrodisíaco"],
+      "available": true
+    },
+    {
+      "id": "duo-marino",
+      "category": "duos-trios-arroces",
+      "name": "Dúo Marino",
+      "description": "La combinación preferida de los peruanos: Fresco Ceviche de Pescado + Crocante Chicharrón de Pescado con sus respectivas guarniciones.",
+      "price": 30.00,
+      "image": "",
+      "labels": ["Top Ventas", "2 en 1"],
+      "available": true
+    },
+    {
+      "id": "trio-marino",
+      "category": "duos-trios-arroces",
+      "name": "Trío Marino",
+      "description": "El combo marino supremo: Ceviche de Pescado + Crocante Chicharrón Mixto + Sabroso Arroz con Mariscos.",
+      "price": 35.00,
+      "image": "",
+      "labels": ["El Más Completo", "3 en 1"],
       "available": true
     },
     {
       "id": "arroz-con-marisco",
-      "category": "platos-de-fondo",
+      "category": "duos-trios-arroces",
       "name": "Arroz con Mariscos",
-      "description": "Arroz criollo marinero meloso flameado al wok con mixtura de mariscos frescos (langostino, calamar, pulpo), ají panca, vino blanco y coronado con zarza criolla fresca.",
-      "price": 35.00,
-      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Sabor Intenso", "Ahumado"],
+      "description": "Arroz criollo amelcochado salteado al wok con mixtura de mariscos (langostino, calamar, pulpo), vino blanco, ají amarillo y zarza criolla.",
+      "price": 25.00,
+      "image": "",
+      "labels": ["Sabor Criollo", "Ahumado"],
       "available": true
     },
     {
       "id": "chaufa-de-marisco",
-      "category": "platos-de-fondo",
+      "category": "duos-trios-arroces",
       "name": "Chaufa de Mariscos",
-      "description": "Arroz chaufa ahumado a alta temperatura en wok con mixtura de mariscos seleccionados, cebollita china, trozos de tortilla de huevo y esencia de sésamo.",
-      "price": 34.00,
-      "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Fusión Wok", "Delicioso"],
-      "available": true
-    },
-    {
-      "id": "langostino-la-olla",
-      "category": "platos-de-fondo",
-      "name": "Langostino a la Olla",
-      "description": "Langostinos seleccionados guisados a fuego lento en una potente y aromática salsa concentrada de la casa con especias marinas, vino blanco y finas hierbas.",
-      "price": 40.00,
-      "image": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Especialidad", "Gourmet"],
-      "available": true
-    },
-    {
-      "id": "pescado-frito",
-      "category": "platos-de-fondo",
-      "name": "Pescado Frito",
-      "description": "Filete o entero del día frito al punto crujiente por fuera y jugoso por dentro, servido con yucas doradas, arroz blanco graneadito y abundante zarza criolla.",
-      "price": 28.00,
-      "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Clásico", "Tradicional"],
-      "available": true
-    },
-    {
-      "id": "cino-al-ajo",
-      "category": "platos-de-fondo",
-      "name": "Especialidad al Ajo",
-      "description": "Tiernos filetes de pescado o mixtura marina bañados en una cremosa y dorada salsa de ajos crocantes, mantequilla flameada al vino blanco y perejil fresco. Con arroz y yucas.",
-      "price": 32.00,
-      "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Aromático", "Recomendado"],
-      "available": true
-    },
-    {
-      "id": "maruchas",
-      "category": "piqueos-entradas",
-      "name": "Maruchas a la Chalaca",
-      "description": "Exquisita porción de maruchas frescas de la costa servidas a la chalaca con cebollita roja finamente picada, ají limo picante, limón recién exprimido y cancha frita.",
+      "description": "Arroz chaufa al wok con mixtura de mariscos seleccionados, cebollita china picada, trozos de tortilla y toque de aceite de ajonjolí.",
       "price": 25.00,
-      "image": "https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Mariscos Frescos", "Entrada"],
-      "available": true
-    },
-    {
-      "id": "cancha-afrodisiaca",
-      "category": "piqueos-entradas",
-      "name": "Cancha Afrodisíaca",
-      "description": "Canchita chulpe bien dorada y crujiente sazonada con el toque marinero de la casa, choclo desgranado y bañada con concentrado puro de tigre afrodisíaco.",
-      "price": 18.00,
-      "image": "https://images.unsplash.com/photo-1541014741259-df5290db5785?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Para Picar", "Afrodisíaco"],
-      "available": true
-    },
-    {
-      "id": "chicha-morada",
-      "category": "bebidas-refrescos",
-      "name": "Chicha Morada Heladita (Jarra 1L)",
-      "description": "100% maíz morado cocido artesanalmente con piña, manzana, membrillo, canela, clavo y abundante jugo de limón fresco.",
-      "price": 15.00,
-      "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Artesanal", "Heladita"],
-      "available": true
-    },
-    {
-      "id": "limonada-marina",
-      "category": "bebidas-refrescos",
-      "name": "Limonada Marina (Jarra 1L)",
-      "description": "Refrescante limonada natural batida al instante con menta y hierbabuena fresca.",
-      "price": 14.00,
-      "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Refrescante"],
-      "available": true
-    },
-    {
-      "id": "cerveza-helada",
-      "category": "bebidas-refrescos",
-      "name": "Cerveza Cusqueña / Pilsen (620ml)",
-      "description": "La compañera ideal bien helada al punto de nieve para acompañar tu ceviche y chicharrón.",
-      "price": 11.00,
-      "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=800&q=80",
-      "labels": ["Punto de Nieve"],
+      "image": "",
+      "labels": ["Fusión Wok", "Delicioso"],
       "available": true
     }
   ]

@@ -1,47 +1,47 @@
 import type { MenuConfig } from "./types";
 
 /**
- * CONFIGURACIÓN DE LA CARTA DIGITAL (El Rompemuelle)
+ * CONFIGURACIÓN DE LA CARTA DIGITAL (Cevichería Raquelita)
  */
 export const MENU_CONFIG: MenuConfig = {
   // BRANDING GENERAL
   branding: {
-    restaurantName: "El Rompemuelle",
-    slogan: "Cevichería & Restaurante Marino • ¡El sabor fresco del mar!",
-    logoUrl: "/images/logo.png", // Enlace al logo generado
-    coverImage: "/images/hero.png", // Imagen de fondo principal
+    restaurantName: "Cevichería Raquelita",
+    slogan: "Pescados y Mariscos • ¡El auténtico sabor y frescura del mar!",
+    logoUrl: "/images/logo.png", // Logo fielmente recreado en alta resolución
+    coverImage: "/images/hero.png", // Portada marina de alta calidad
     socials: {
-      instagram: "https://instagram.com/elrompemuelle",
-      facebook: "https://facebook.com/elrompemuelle",
-      whatsapp: "https://wa.me/51948099076?text=Hola%20El%20Rompemuelle,%20quisiera%20hacer%20un%20pedido",
-      tiktok: "https://tiktok.com/@elrompemuelle"
+      instagram: "https://instagram.com/cevicheriaraquelita",
+      facebook: "https://facebook.com/cevicheriaraquelita",
+      whatsapp: "https://wa.me/51948099076?text=Hola%20Cevicher%C3%ADa%20Raquelita,%20quisiera%20hacer%20un%20pedido",
+      tiktok: "https://tiktok.com/@cevicheriaraquelita"
     }
   },
 
   // PALETA DE COLORES Y DISEÑO
   theme: {
-    primaryColor: "#38bdf8",       // Cyan mar brillante
-    secondaryColor: "#fbbf24",     // Dorado ámbar frito/ceviche
-    bgColor: "#090d16",            // Fondo azul marino noche súper elegante
-    cardBgColor: "#111a2e",        // Tarjetas azul océano con efecto cristal
-    textColor: "#f8fafc",          // Texto principal de alta claridad
-    textMutedColor: "#94a3b8",     // Texto secundario
-    borderRadius: "18px",          // Bordes curvos elegantes
+    primaryColor: "#0284c7",       // Azul océano vibrante
+    secondaryColor: "#f97316",     // Naranja cálido marino / Ají limo
+    bgColor: "#090f1d",            // Fondo azul marino noche profundo y elegante
+    cardBgColor: "#101d36",        // Tarjetas azul océano con efecto glassmorphism
+    textColor: "#f8fafc",          // Blanco nítido de alta legibilidad
+    textMutedColor: "#94a3b8",     // Azul grisáceo suave
+    borderRadius: "20px",          // Bordes curvos modernos y estilizados
     fontFamily: "'Outfit', sans-serif" // Tipografía moderna Google Fonts
   },
 
   // CONFIGURACIÓN DE LA TIENDA / PEDIDOS
   store: {
-    whatsappNumber: "51948099076", // Número de WhatsApp para recibir pedidos
+    whatsappNumber: "51948099076", // Número de WhatsApp para pedidos directos
     currency: "S/",                // Soles peruanos
-    enableCart: true,              // Carrito flotante interactivo
+    enableCart: true,              // Carrito interactivo
     tax: 0.00,
     deliveryCost: 0.00
   },
 
   // CONFIGURACIÓN DE LA FUENTE DE DATOS
   dataSource: {
-    type: "local", // "local" o "sheets"
+    type: "local",
     sheetsUrl: ""
   }
 };
