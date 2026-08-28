@@ -8,12 +8,12 @@ export const MENU_CONFIG: MenuConfig = {
   branding: {
     restaurantName: "Cevichería Raquelita",
     slogan: "Pescados y Mariscos • ¡El auténtico sabor y frescura del mar!",
-    logoUrl: "/images/logo.png", // Logo fielmente recreado en alta resolución
-    coverImage: "/images/hero.png", // Portada marina de alta calidad
+    logoUrl: "/images/logo.webp",
+    coverImage: "/images/hero.webp",
     socials: {
       instagram: "https://instagram.com/cevicheriaraquelita",
       facebook: "https://facebook.com/cevicheriaraquelita",
-      whatsapp: "https://wa.me/51948099076?text=Hola%20Cevicher%C3%ADa%20Raquelita,%20quisiera%20hacer%20un%20pedido",
+      whatsapp: "https://wa.me/51974475523?text=Hola%20Cevicher%C3%ADa%20Raquelita,%20quisiera%20hacer%20un%20pedido%20delivery",
       tiktok: "https://tiktok.com/@cevicheriaraquelita"
     }
   },
@@ -32,7 +32,7 @@ export const MENU_CONFIG: MenuConfig = {
 
   // CONFIGURACIÓN DE LA TIENDA / PEDIDOS
   store: {
-    whatsappNumber: "51948099076", // Número de WhatsApp para pedidos directos
+    whatsappNumber: "51974475523", // Número de WhatsApp para delivery y pedidos directos
     currency: "S/",                // Soles peruanos
     enableCart: true,              // Carrito interactivo
     tax: 0.00,

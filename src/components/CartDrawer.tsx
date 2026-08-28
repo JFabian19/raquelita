@@ -1,12 +1,12 @@
 import React from "react";
 import type { CartItem } from "../types";
-import { X, ShoppingBag, Plus, Minus, Send, ShoppingCart } from "lucide-react";
+import { X, ShoppingBag, Plus, Minus, Send, ShoppingCart, Tag } from "lucide-react";
 
 interface CartDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   cartItems: CartItem[];
-  onUpdateQuantity: (dishId: string, delta: number) => void;
+  onUpdateQuantity: (cartItemId: string, delta: number) => void;
   currency: string;
   whatsappNumber: string;
   restaurantName: string;
@@ -21,22 +21,34 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   whatsappNumber,
   restaurantName,
 }) => {
-  const subtotal = cartItems.reduce((acc, item) => acc + item.dish.price * item.quantity, 0);
+  const getItemUnitPrice = (item: CartItem) => {
+    return item.selectedVariant ? item.selectedVariant.price : item.dish.price;
+  };
+
+  const subtotal = cartItems.reduce(
+    (acc, item) => acc + getItemUnitPrice(item) * item.quantity,
+    0
+  );
   const total = subtotal;
 
   const handleSendOrder = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (cartItems.length === 0) return;
 
-    // Cabecera del pedido
-    let message = `*NUEVO PEDIDO - ${restaurantName.toUpperCase()}*\n`;
+    // Cabecera del pedido delivery
+    let message = `*NUEVO PEDIDO DELIVERY - ${restaurantName.toUpperCase()}*\n`;
     message += `-------------------------------------------\n\n`;
 
     // Detalle de productos
     message += `*Detalle del Pedido:*\n`;
     cartItems.forEach((item) => {
-      const itemSubtotal = item.dish.price * item.quantity;
-      message += `• _${item.quantity}x_ *${item.dish.name}* (${currency}${itemSubtotal.toFixed(2)})\n`;
+      const unitPrice = getItemUnitPrice(item);
+      const itemSubtotal = unitPrice * item.quantity;
+      if (item.selectedVariant) {
+        message += `• _${item.quantity}x_ *${item.dish.name}* [${item.selectedVariant.name}] (${currency}${itemSubtotal.toFixed(2)})\n`;
+      } else {
+        message += `• _${item.quantity}x_ *${item.dish.name}* (${currency}${itemSubtotal.toFixed(2)})\n`;
+      }
     });
     message += `\n`;
 
@@ -44,7 +56,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     message += `*TOTAL A PAGAR: ${currency}${total.toFixed(2)}*\n`;
     message += `-------------------------------------------\n\n`;
 
-    message += `_Pedido enviado desde la Carta Digital_ 📱`;
+    message += `📍 *Dirección de Entrega / Delivery:* (Escribe tu dirección o ubicación aquí)\n`;
+    message += `👤 *Nombre de contacto:*\n\n`;
+    message += `_Pedido enviado desde la Carta Digital de Cevichería Raquelita_ 📱`;
 
     // Generar enlace
     const encodedMessage = encodeURIComponent(message);
@@ -79,44 +93,54 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             <div className="empty-cart-state">
               <ShoppingBag size={56} />
               <p>Tu pedido está vacío</p>
-              <span>Selecciona tus platos favoritos del menú</span>
+              <span>Selecciona tus platos y fuentes del menú</span>
             </div>
           ) : (
             <>
               {/* Lista de productos */}
               <div className="cart-items-list">
-                {cartItems.map((item) => (
-                  <div key={item.dish.id} className="cart-item">
-                    <div className="cart-item-info">
-                      <h4 className="cart-item-name">{item.dish.name}</h4>
-                      <span className="cart-item-price">
-                        {currency}
-                        {(item.dish.price * item.quantity).toFixed(2)}
-                      </span>
-                    </div>
+                {cartItems.map((item) => {
+                  const unitPrice = getItemUnitPrice(item);
+                  return (
+                    <div key={item.cartItemId} className="cart-item">
+                      <div className="cart-item-info">
+                        <h4 className="cart-item-name">{item.dish.name}</h4>
+                        {item.selectedVariant && (
+                          <div className="cart-item-variant-chip">
+                            <Tag size={11} />
+                            <span>{item.selectedVariant.name}</span>
+                          </div>
+                        )}
+                        <span className="cart-item-price">
+                          {currency}
+                          {(unitPrice * item.quantity).toFixed(2)}
+                          {item.quantity > 1 && (
+                            <small className="cart-item-unit-note"> ({currency}{unitPrice.toFixed(2)} c/u)</small>
+                          )}
+                        </span>
+                      </div>
 
-                    <div className="cart-item-actions">
-                      <button
-                        onClick={() => onUpdateQuantity(item.dish.id, -1)}
-                        className="cart-item-btn"
-                        aria-label="Disminuir"
-                      >
-                        <Minus size={12} />
-                      </button>
-                      <span className="cart-item-qty">{item.quantity}</span>
-                      <button
-                        onClick={() => onUpdateQuantity(item.dish.id, 1)}
-                        className="cart-item-btn"
-                        aria-label="Aumentar"
-                      >
-                        <Plus size={12} />
-                      </button>
+                      <div className="cart-item-actions">
+                        <button
+                          onClick={() => onUpdateQuantity(item.cartItemId, -1)}
+                          className="cart-item-btn"
+                          aria-label="Disminuir"
+                        >
+                          <Minus size={12} />
+                        </button>
+                        <span className="cart-item-qty">{item.quantity}</span>
+                        <button
+                          onClick={() => onUpdateQuantity(item.cartItemId, 1)}
+                          className="cart-item-btn"
+                          aria-label="Aumentar"
+                        >
+                          <Plus size={12} />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
-
-
             </>
           )}
         </div>
@@ -132,14 +156,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </span>
             </div>
 
-
             <button
               onClick={handleSendOrder}
               className="send-order-btn"
               type="button"
             >
               <Send size={18} />
-              <span>Enviar Pedido</span>
+              <span>Enviar Pedido Delivery</span>
               <strong>
                 {currency}
                 {total.toFixed(2)}

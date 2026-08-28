@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MENU_CONFIG } from "./config";
-import type { Category, Dish, CartItem } from "./types";
+import type { Category, Dish, DishVariant, CartItem } from "./types";
 import { SplashLoader } from "./components/SplashLoader";
 import { HeroHeader } from "./components/HeroHeader";
 import { CategoryNav } from "./components/CategoryNav";
 import { DishCard } from "./components/DishCard";
 import { CartDrawer } from "./components/CartDrawer";
+import { VariantSelectModal } from "./components/VariantSelectModal";
 import { ShoppingCart, Image as ImageIcon, Sparkles } from "lucide-react";
 
 export const App: React.FC = () => {
@@ -15,6 +16,10 @@ export const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("");
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // Estado para el modal de selección de tamaños/variantes
+  const [selectedDishForVariant, setSelectedDishForVariant] = useState<Dish | null>(null);
+  const [isVariantModalOpen, setIsVariantModalOpen] = useState(false);
 
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
 
@@ -32,8 +37,7 @@ export const App: React.FC = () => {
     root.style.setProperty("--border-radius", theme.borderRadius);
     root.style.setProperty("--font-family", theme.fontFamily);
 
-    // Glow color derivado del color principal (opcional, en RGBA)
-    // Extraer hex a rgb para sombreado glow
+    // Sombras glow
     const hex = theme.primaryColor.replace("#", "");
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
@@ -58,7 +62,15 @@ export const App: React.FC = () => {
     const savedCart = localStorage.getItem("carta_digital_cart");
     if (savedCart) {
       try {
-        setCart(JSON.parse(savedCart));
+        const parsed = JSON.parse(savedCart);
+        // Migración de formato si venía del modelo anterior sin cartItemId
+        const normalized = parsed.map((item: any) => ({
+          cartItemId: item.cartItemId || (item.selectedVariant ? `${item.dish.id}-${item.selectedVariant.id}` : item.dish.id),
+          dish: item.dish,
+          selectedVariant: item.selectedVariant,
+          quantity: item.quantity || 1
+        }));
+        setCart(normalized);
       } catch (e) {
         console.error("Error al parsear el carrito guardado", e);
       }
@@ -97,22 +109,20 @@ export const App: React.FC = () => {
       } catch (err) {
         console.error("Error cargando los datos del menú", err);
       } finally {
-        // Retraso estético corto para lucir la animación del loader
         setTimeout(() => {
           setIsLoading(false);
-        }, 1200);
+        }, 1000);
       }
     };
 
     loadData();
   }, []);
 
-  // Parser robusto de Google Sheets CSV
+  // Parser de Google Sheets CSV
   const parseCSV = (text: string) => {
     const lines = text.split(/\r?\n/);
     if (lines.length < 2) return { categories: [], items: [] };
 
-    // Limpieza de encabezados
     const headers = lines[0].split(",").map((h) => h.trim().toLowerCase());
     const categoriesMap: { [id: string]: Category } = {};
     const items: Dish[] = [];
@@ -197,46 +207,72 @@ export const App: React.FC = () => {
     };
   };
 
-  // 4. ScrollSpy desactivado por requerimiento (sólo se selecciona por clic)
-
-  // 5. Manejo del Carrito
+  // 4. Manejo del Carrito
   const handleAddToCart = (dish: Dish) => {
+    // Si el plato tiene variantes, abrir modal de selección
+    if (dish.variants && dish.variants.length > 0) {
+      setSelectedDishForVariant(dish);
+      setIsVariantModalOpen(true);
+      return;
+    }
+
+    // Plato sin variantes (precio único)
+    const cartItemId = dish.id;
     setCart((prevCart) => {
-      const existing = prevCart.find((item) => item.dish.id === dish.id);
+      const existing = prevCart.find((item) => item.cartItemId === cartItemId);
       if (existing) {
         return prevCart.map((item) =>
-          item.dish.id === dish.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.cartItemId === cartItemId ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      return [...prevCart, { dish, quantity: 1 }];
+      return [...prevCart, { cartItemId, dish, quantity: 1 }];
+    });
+  };
+
+  const handleAddToCartWithVariant = (dish: Dish, selectedVariant: DishVariant, quantity: number) => {
+    const cartItemId = `${dish.id}-${selectedVariant.id}`;
+    setCart((prevCart) => {
+      const existing = prevCart.find((item) => item.cartItemId === cartItemId);
+      if (existing) {
+        return prevCart.map((item) =>
+          item.cartItemId === cartItemId ? { ...item, quantity: item.quantity + quantity } : item
+        );
+      }
+      return [...prevCart, { cartItemId, dish, selectedVariant, quantity }];
     });
   };
 
   const handleRemoveFromCart = (dish: Dish) => {
+    const cartItemId = dish.id;
     setCart((prevCart) => {
-      const existing = prevCart.find((item) => item.dish.id === dish.id);
+      const existing = prevCart.find((item) => item.cartItemId === cartItemId);
       if (existing && existing.quantity > 1) {
         return prevCart.map((item) =>
-          item.dish.id === dish.id ? { ...item, quantity: item.quantity - 1 } : item
+          item.cartItemId === cartItemId ? { ...item, quantity: item.quantity - 1 } : item
         );
       }
-      return prevCart.filter((item) => item.dish.id !== dish.id);
+      return prevCart.filter((item) => item.cartItemId !== cartItemId);
     });
   };
 
-  const handleUpdateQuantity = (dishId: string, delta: number) => {
+  const handleUpdateQuantity = (cartItemId: string, delta: number) => {
     setCart((prevCart) => {
-      const existing = prevCart.find((item) => item.dish.id === dishId);
+      const existing = prevCart.find((item) => item.cartItemId === cartItemId);
       if (!existing) return prevCart;
 
       const nextQty = existing.quantity + delta;
       if (nextQty <= 0) {
-        return prevCart.filter((item) => item.dish.id !== dishId);
+        return prevCart.filter((item) => item.cartItemId !== cartItemId);
       }
       return prevCart.map((item) =>
-        item.dish.id === dishId ? { ...item, quantity: nextQty } : item
+        item.cartItemId === cartItemId ? { ...item, quantity: nextQty } : item
       );
     });
+  };
+
+  const handleOpenVariantModal = (dish: Dish) => {
+    setSelectedDishForVariant(dish);
+    setIsVariantModalOpen(true);
   };
 
   // Desplazarse manualmente a la sección
@@ -256,7 +292,10 @@ export const App: React.FC = () => {
   };
 
   const cartItemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
-  const cartTotal = cart.reduce((acc, item) => acc + item.dish.price * item.quantity, 0);
+  const cartTotal = cart.reduce((acc, item) => {
+    const price = item.selectedVariant ? item.selectedVariant.price : item.dish.price;
+    return acc + price * item.quantity;
+  }, 0);
 
   return (
     <>
@@ -315,7 +354,7 @@ export const App: React.FC = () => {
                         <div className="category-placeholder-grid-pattern"></div>
                         <div className="category-placeholder-badge">
                           <ImageIcon size={15} />
-                          <span>Acá iría la imagen de categoría</span>
+                          <span>Cevichería Raquelita</span>
                         </div>
                       </div>
                     )}
@@ -332,17 +371,21 @@ export const App: React.FC = () => {
                   {/* Rejilla de platos */}
                   <div className="dishes-grid">
                     {categoryDishes.map((dish) => {
-                      const cartItem = cart.find((item) => item.dish.id === dish.id);
-                      const quantity = cartItem ? cartItem.quantity : 0;
+                      // Total de este plato en el carrito (incluyendo variantes)
+                      const dishInCartCount = cart
+                        .filter((item) => item.dish.id === dish.id)
+                        .reduce((acc, item) => acc + item.quantity, 0);
+
                       return (
                         <DishCard
                           key={dish.id}
                           dish={dish}
                           currency={MENU_CONFIG.store.currency}
                           enableCart={MENU_CONFIG.store.enableCart}
-                          quantity={quantity}
+                          quantity={dishInCartCount}
                           onAddToCart={() => handleAddToCart(dish)}
                           onRemoveFromCart={() => handleRemoveFromCart(dish)}
+                          onOpenVariantModal={handleOpenVariantModal}
                           whatsappNumber={MENU_CONFIG.store.whatsappNumber}
                         />
                       );
@@ -376,6 +419,18 @@ export const App: React.FC = () => {
             <h3>{MENU_CONFIG.branding.restaurantName}</h3>
             <p className="footer-slogan">{MENU_CONFIG.branding.slogan}</p>
 
+            <div className="footer-delivery-callout">
+              <span>🛵 ¡Pide tu delivery directo al WhatsApp!</span>
+              <a
+                href={`https://wa.me/${MENU_CONFIG.store.whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-wa-link"
+              >
+                974 475 523
+              </a>
+            </div>
+
             <div className="footer-divider"></div>
 
             <p className="thank-you-msg">
@@ -384,7 +439,7 @@ export const App: React.FC = () => {
 
             <div className="developer-credit">
               <p>© {new Date().getFullYear()} Todos los derechos reservados.</p>
-              <p>Hecho por <a href="https://wa.me/51948099076" target="_blank" rel="noopener noreferrer">TymaSolutions</a></p>
+              <p>Hecho para <span style={{ color: "#38bdf8", fontWeight: 600 }}>Cevichería Raquelita</span></p>
             </div>
           </div>
         </footer>
@@ -422,6 +477,15 @@ export const App: React.FC = () => {
             restaurantName={MENU_CONFIG.branding.restaurantName}
           />
         )}
+
+        {/* 8. Modal de Selección de Tamaños y Variantes */}
+        <VariantSelectModal
+          isOpen={isVariantModalOpen}
+          dish={selectedDishForVariant}
+          currency={MENU_CONFIG.store.currency}
+          onClose={() => setIsVariantModalOpen(false)}
+          onConfirm={handleAddToCartWithVariant}
+        />
 
       </div>
     </>

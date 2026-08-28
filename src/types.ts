@@ -5,6 +5,13 @@ export interface Category {
   image: string;
 }
 
+export interface DishVariant {
+  id: string;
+  name: string;
+  price: number;
+  description?: string;
+}
+
 export interface Dish {
   id: string;
   category: string;
@@ -14,10 +21,13 @@ export interface Dish {
   image: string;
   labels: string[];
   available: boolean;
+  variants?: DishVariant[];
 }
 
 export interface CartItem {
+  cartItemId: string;
   dish: Dish;
+  selectedVariant?: DishVariant;
   quantity: number;
 }
 

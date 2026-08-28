@@ -1,240 +1,52 @@
 {
   "categories": [
-    {
-      "id": "ceviches-leche-tigre",
-      "name": "Ceviches & Leche de Tigre",
-      "description": "Pescados y mariscos frescos marinados al instante con puro limón, ají limo y sazón de la casa",
-      "image": ""
-    },
-    {
-      "id": "chicharrones-frituras",
-      "name": "Chicharrones & Frituras",
-      "description": "Crocantes al punto perfecto, servidos con yucas doradas, chifles y zarza criolla",
-      "image": ""
-    },
-    {
-      "id": "sudados-sopas",
-      "name": "Sudados, Guisos & Sopas",
-      "description": "Reconstituyentes caldos y guisos marineros a la olla con chicha de jora y finas hierbas",
-      "image": ""
-    },
-    {
-      "id": "duos-trios-arroces",
-      "name": "Dúos, Tríos & Arroces Marinos",
-      "description": "Las mejores combinaciones y arroces salteados con mixtura selecta de mariscos",
-      "image": ""
-    }
+    { "id": "platos", "name": "Platos", "description": "", "image": "/images/category-platos.webp" },
+    { "id": "fuente-familiar", "name": "Fuente Familiar", "description": "", "image": "/images/category-fuentes.webp" },
+    { "id": "bebidas", "name": "Bebidas", "description": "", "image": "/images/category-bebidas.webp" }
   ],
   "items": [
-    {
-      "id": "leche-de-tigre",
-      "category": "ceviches-leche-tigre",
-      "name": "Leche de Tigre",
-      "description": "Potente concentrado marino preparado al momento con dados de pescado fresco, chicharrón crocante, canchita chulpe y choclo desgranado. (Personal S/ 10.00 | Doble S/ 20.00)",
-      "price": 10.00,
-      "image": "",
-      "labels": ["Popular", "Fresco", "Picante al gusto"],
-      "available": true
-    },
-    {
-      "id": "ceviche-simple",
-      "category": "ceviches-leche-tigre",
-      "name": "Ceviche Simple (Pescado)",
-      "description": "Fresquísimos trozos de pescado del día curtidos en jugo de limón recién exprimido, ají limo, cebolla en pluma, camote glaseado, choclo y canchita.",
-      "price": 25.00,
-      "image": "",
-      "labels": ["Clásico Marino", "Recomendado"],
-      "available": true
-    },
-    {
-      "id": "ceviche-mixto",
-      "category": "ceviches-leche-tigre",
-      "name": "Ceviche Mixto",
-      "description": "Combinación perfecta de pescado fresco y mariscos seleccionados (pulpo, langostino, calamar) marinados en potente leche de tigre.",
-      "price": 30.00,
-      "image": "",
-      "labels": ["Plato Estrella", "Especialidad"],
-      "available": true
-    },
-    {
-      "id": "ceviche-rocoto",
-      "category": "ceviches-leche-tigre",
-      "name": "Ceviche en Salsa de Rocoto",
-      "description": "Pescado fresco bañado en una deliciosa crema cremosa y picantita de rocoto norteño, con camote dulce, choclo tierno y cancha.",
-      "price": 28.00,
-      "image": "",
-      "labels": ["Cremoso", "Picantito"],
-      "available": true
-    },
-    {
-      "id": "ceviche-carretillero",
-      "category": "ceviches-leche-tigre",
-      "name": "Ceviche Carretillero",
-      "description": "El favorito de siempre: Ceviche fresco coronado con una generosa porción de chicharrón de pota/pescado crocante y canchita dorada.",
-      "price": 30.00,
-      "image": "",
-      "labels": ["El Favorito", "2 en 1"],
-      "available": true
-    },
-    {
-      "id": "chicharron-pescado",
-      "category": "chicharrones-frituras",
-      "name": "Chicharrón de Pescado",
-      "description": "Bocados crujientes de filete de pescado dorados a la perfección, servidos con yucas fritas, salsa tártara artesanal y zarza criolla.",
-      "price": 28.00,
-      "image": "",
-      "labels": ["Ultra Crocante", "Familiar"],
-      "available": true
-    },
-    {
-      "id": "chicharron-mixto",
-      "category": "chicharrones-frituras",
-      "name": "Chicharrón Mixto",
-      "description": "Mixtura marina crocante con trozos de pescado y mariscos rebozados, acompañados de yucas doradas y salsa tártara de la casa.",
-      "price": 30.00,
-      "image": "",
-      "labels": ["Recomendado", "Para Compartir"],
-      "available": true
-    },
-    {
-      "id": "jalea-mixta",
-      "category": "chicharrones-frituras",
-      "name": "Jalea Mixta",
-      "description": "Fuente marina con generosos mariscos y filete de pescado rebozados y crocantes, coronada con abundante sarza criolla y tártara.",
-      "price": 40.00,
-      "image": "",
-      "labels": ["Especialidad", "Bien Servido"],
-      "available": true
-    },
-    {
-      "id": "cabrilla-frita",
-      "category": "chicharrones-frituras",
-      "name": "Cabrilla Frita",
-      "description": "Pescado entero de cabrilla frito al punto dorado y crujiente, servido con arroz blanco graneado, yucas doradas y zarza criolla.",
-      "price": 25.00,
-      "image": "",
-      "labels": ["Pescado Entero", "Tradicional"],
-      "available": true
-    },
-    {
-      "id": "chita-frita",
-      "category": "chicharrones-frituras",
-      "name": "Chita Frita",
-      "description": "Exquisita chita entera dorada y crocante por fuera, con carne tierna y jugosa por dentro. Acompañada de arroz blanco, yucas y sarza criolla.",
-      "price": 40.00,
-      "image": "",
-      "labels": ["Gourmet", "Pescado Fino"],
-      "available": true
-    },
-    {
-      "id": "sudado-trambollo",
-      "category": "sudados-sopas",
-      "name": "Sudado de Trambollo",
-      "description": "Tradicional trambollo cocido a fuego lento con tomate, cebolla, ají amarillo, chicha de jora, culantro y yucas tiernas.",
-      "price": 30.00,
-      "image": "",
-      "labels": ["Reconstituyente", "A la Olla"],
-      "available": true
-    },
-    {
-      "id": "sudado-congrio",
-      "category": "sudados-sopas",
-      "name": "Sudado de Congrio",
-      "description": "Delicioso congrio fresco en su jugo concentrado con finas hierbas aromáticas, vino blanco, tomate, cebolla y guarnición de yuca.",
-      "price": 25.00,
-      "image": "",
-      "labels": ["Sabor Intenso", "Tradición"],
-      "available": true
-    },
-    {
-      "id": "sudado-cabrilla",
-      "category": "sudados-sopas",
-      "name": "Sudado de Cabrilla",
-      "description": "Cabrilla entera cocida en su salsa marinera con fondo de pescado, chicha de jora, ajíes norteños, cebollas y yucas sancochadas.",
-      "price": 20.00,
-      "image": "",
-      "labels": ["Económico", "Nutritivo"],
-      "available": true
-    },
-    {
-      "id": "sudado-tollo",
-      "category": "sudados-sopas",
-      "name": "Sudado de Tollo",
-      "description": "Tierno filete de tollo en concentrado caldo marino con verduras salteadas, culantro fresco y porción de arroz con yuca.",
-      "price": 20.00,
-      "image": "",
-      "labels": ["Ligero", "Saludable"],
-      "available": true
-    },
-    {
-      "id": "guisada",
-      "category": "sudados-sopas",
-      "name": "Pescado a la Guisada",
-      "description": "Sabroso guiso casero de pescado al jugo con papas o yucas, sazón criolla tradicional y arroz blanco.",
-      "price": 20.00,
-      "image": "",
-      "labels": ["Sabor Casero", "Criollo"],
-      "available": true
-    },
-    {
-      "id": "chilcano",
-      "category": "sudados-sopas",
-      "name": "Chilcano Marino",
-      "description": "Caldo caliente y reconfortante de cabezas y espinazos de pescado, aromatizado con kion, apio, culantro, limón y canchita serrana.",
-      "price": 15.00,
-      "image": "",
-      "labels": ["Levantamuertos", "Reconfortante"],
-      "available": true
-    },
-    {
-      "id": "parihuela",
-      "category": "sudados-sopas",
-      "name": "Parihuela Especial",
-      "description": "La reina de las sopas marinas: Concentrado potente a base de cangrejo, mixtura de mariscos, filete de pescado, ají panca y chicha de jora.",
-      "price": 40.00,
-      "image": "",
-      "labels": ["Fuerza Marina", "Afrodisíaco"],
-      "available": true
-    },
-    {
-      "id": "duo-marino",
-      "category": "duos-trios-arroces",
-      "name": "Dúo Marino",
-      "description": "La combinación preferida de los peruanos: Fresco Ceviche de Pescado + Crocante Chicharrón de Pescado con sus respectivas guarniciones.",
-      "price": 30.00,
-      "image": "",
-      "labels": ["Top Ventas", "2 en 1"],
-      "available": true
-    },
-    {
-      "id": "trio-marino",
-      "category": "duos-trios-arroces",
-      "name": "Trío Marino",
-      "description": "El combo marino supremo: Ceviche de Pescado + Crocante Chicharrón Mixto + Sabroso Arroz con Mariscos.",
-      "price": 35.00,
-      "image": "",
-      "labels": ["El Más Completo", "3 en 1"],
-      "available": true
-    },
-    {
-      "id": "arroz-con-marisco",
-      "category": "duos-trios-arroces",
-      "name": "Arroz con Mariscos",
-      "description": "Arroz criollo amelcochado salteado al wok con mixtura de mariscos (langostino, calamar, pulpo), vino blanco, ají amarillo y zarza criolla.",
-      "price": 25.00,
-      "image": "",
-      "labels": ["Sabor Criollo", "Ahumado"],
-      "available": true
-    },
-    {
-      "id": "chaufa-de-marisco",
-      "category": "duos-trios-arroces",
-      "name": "Chaufa de Mariscos",
-      "description": "Arroz chaufa al wok con mixtura de mariscos seleccionados, cebollita china picada, trozos de tortilla y toque de aceite de ajonjolí.",
-      "price": 25.00,
-      "image": "",
-      "labels": ["Fusión Wok", "Delicioso"],
-      "available": true
-    }
+    { "id": "leche-de-tigre", "category": "platos", "name": "Leche de tigre", "description": "", "price": 20, "image": "", "labels": [], "available": true },
+    { "id": "ceviche-mixto", "category": "platos", "name": "Ceviche mixto", "description": "", "price": 30, "image": "", "labels": [], "available": true },
+    { "id": "ceviche-simple", "category": "platos", "name": "Ceviche simple", "description": "", "price": 25, "image": "", "labels": [], "available": true },
+    { "id": "ceviche-salsa-rocoto", "category": "platos", "name": "Ceviche en salsa de rocoto", "description": "", "price": 30, "image": "", "labels": [], "available": true },
+    { "id": "ceviche-carretillero", "category": "platos", "name": "Ceviche carretillero", "description": "", "price": 30, "image": "", "labels": [], "available": true },
+    { "id": "chicharron-pescado", "category": "platos", "name": "Chicharrón de pescado", "description": "", "price": 30, "image": "", "labels": [], "available": true },
+    { "id": "chicharron-mixto", "category": "platos", "name": "Chicharrón mixto", "description": "", "price": 35, "image": "", "labels": [], "available": true },
+    { "id": "jalea-mixta", "category": "platos", "name": "Jalea mixta", "description": "", "price": 40, "image": "", "labels": [], "available": true },
+    { "id": "cabrilla-frita", "category": "platos", "name": "Cabrilla frita", "description": "", "price": 30, "image": "", "labels": [], "available": true },
+    { "id": "chita-frita", "category": "platos", "name": "Chita frita", "description": "", "price": 40, "image": "", "labels": [], "available": true },
+    { "id": "sudado-trambollo", "category": "platos", "name": "Sudado de trambollo", "description": "", "price": 40, "image": "", "labels": [], "available": true },
+    { "id": "sudado-congrio", "category": "platos", "name": "Sudado de congrio", "description": "", "price": 30, "image": "", "labels": [], "available": true },
+    { "id": "sudado-cabrilla", "category": "platos", "name": "Sudado de cabrilla", "description": "", "price": 30, "image": "", "labels": [], "available": true },
+    { "id": "sudado-tollo", "category": "platos", "name": "Sudado de tollo", "description": "", "price": 20, "image": "", "labels": [], "available": true },
+    { "id": "guisada", "category": "platos", "name": "Guisada", "description": "", "price": 20, "image": "", "labels": [], "available": true },
+    { "id": "chilcano", "category": "platos", "name": "Chilcano", "description": "", "price": 20, "image": "", "labels": [], "available": true },
+    { "id": "parihuela", "category": "platos", "name": "Parihuela", "description": "", "price": 40, "image": "", "labels": [], "available": true },
+    { "id": "duo-marino", "category": "platos", "name": "Dúo marino", "description": "", "price": 30, "image": "", "labels": [], "available": true },
+    { "id": "trio-marino", "category": "platos", "name": "Trío marino", "description": "", "price": 35, "image": "", "labels": [], "available": true },
+    { "id": "arroz-marisco", "category": "platos", "name": "Arroz con marisco", "description": "", "price": 30, "image": "", "labels": [], "available": true },
+    { "id": "chaufa-marisco", "category": "platos", "name": "Chaufa de marisco", "description": "", "price": 25, "image": "", "labels": [], "available": true },
+
+    { "id": "fuente-ceviche-mixto", "category": "fuente-familiar", "name": "Ceviche mixto", "description": "", "price": 40, "image": "", "labels": [], "available": true, "variants": [{ "id": "chica", "name": "Fuente Chica", "price": 40 }, { "id": "mediana", "name": "Fuente Mediana", "price": 50 }, { "id": "grande", "name": "Fuente Grande", "price": 60 }, { "id": "familiar", "name": "Fuente Familiar", "price": 80 }] },
+    { "id": "fuente-chicharron-pescado", "category": "fuente-familiar", "name": "Chicharrón de pescado", "description": "", "price": 30, "image": "", "labels": [], "available": true, "variants": [{ "id": "chica", "name": "Fuente Chica", "price": 30 }, { "id": "mediana", "name": "Fuente Mediana", "price": 40 }, { "id": "grande", "name": "Fuente Grande", "price": 50 }, { "id": "familiar", "name": "Fuente Familiar", "price": 60 }, { "id": "extra-familiar", "name": "Fuente Extra Familiar", "price": 80 }] },
+    { "id": "fuente-jalea-mixta", "category": "fuente-familiar", "name": "Jalea mixta", "description": "", "price": 60, "image": "", "labels": [], "available": true, "variants": [{ "id": "mediana", "name": "Fuente Mediana", "price": 60 }, { "id": "familiar", "name": "Fuente Familiar", "price": 80 }] },
+    { "id": "fuente-sudado-trambollo", "category": "fuente-familiar", "name": "Sudado de trambollo", "description": "", "price": 60, "image": "", "labels": [], "available": true, "variants": [{ "id": "mediana", "name": "Fuente Mediana", "price": 60 }, { "id": "familiar", "name": "Fuente Familiar", "price": 70 }] },
+    { "id": "fuente-sudado-cabrilla", "category": "fuente-familiar", "name": "Sudado de cabrilla", "description": "", "price": 40, "image": "", "labels": [], "available": true, "variants": [{ "id": "chica", "name": "Fuente Chica", "price": 40 }, { "id": "mediana", "name": "Fuente Mediana", "price": 50 }, { "id": "familiar", "name": "Fuente Familiar", "price": 60 }] },
+    { "id": "fuente-sudado-tollo", "category": "fuente-familiar", "name": "Sudado de tollo", "description": "", "price": 30, "image": "", "labels": [], "available": true, "variants": [{ "id": "chica", "name": "Fuente Chica", "price": 30 }, { "id": "mediana", "name": "Fuente Mediana", "price": 40 }, { "id": "grande", "name": "Fuente Grande", "price": 50 }, { "id": "familiar", "name": "Fuente Familiar", "price": 60 }] },
+    { "id": "fuente-parihuela", "category": "fuente-familiar", "name": "Parihuela", "description": "", "price": 60, "image": "", "labels": [], "available": true, "variants": [{ "id": "mediana", "name": "Fuente Mediana", "price": 60 }, { "id": "familiar", "name": "Fuente Familiar", "price": 80 }] },
+    { "id": "fuente-duo-familiar", "category": "fuente-familiar", "name": "Dúo familiar", "description": "", "price": 60, "image": "", "labels": [], "available": true, "variants": [{ "id": "chica", "name": "Fuente Chica", "price": 60 }, { "id": "mediana", "name": "Fuente Mediana", "price": 70 }, { "id": "grande", "name": "Fuente Grande", "price": 80 }, { "id": "familiar", "name": "Fuente Familiar", "price": 90 }, { "id": "extra-familiar", "name": "Fuente Extra Familiar", "price": 100 }] },
+    { "id": "fuente-trio-familiar", "category": "fuente-familiar", "name": "Trío familiar", "description": "", "price": 70, "image": "", "labels": [], "available": true, "variants": [{ "id": "chica", "name": "Fuente Chica", "price": 70 }, { "id": "mediana", "name": "Fuente Mediana", "price": 80 }, { "id": "grande", "name": "Fuente Grande", "price": 90 }, { "id": "familiar", "name": "Fuente Familiar", "price": 100 }, { "id": "extra-familiar", "name": "Fuente Extra Familiar", "price": 150 }] },
+    { "id": "fuente-ronda-marina", "category": "fuente-familiar", "name": "Ronda marina", "description": "", "price": 60, "image": "", "labels": [], "available": true },
+    { "id": "fuente-arroz-marisco", "category": "fuente-familiar", "name": "Arroz con marisco", "description": "", "price": 40, "image": "", "labels": [], "available": true, "variants": [{ "id": "chica", "name": "Fuente Chica", "price": 40 }, { "id": "mediana", "name": "Fuente Mediana", "price": 50 }, { "id": "familiar", "name": "Fuente Familiar", "price": 60 }] },
+    { "id": "fuente-chaufa-marisco", "category": "fuente-familiar", "name": "Chaufa de marisco", "description": "", "price": 40, "image": "", "labels": [], "available": true, "variants": [{ "id": "chica", "name": "Fuente Chica", "price": 40 }, { "id": "mediana", "name": "Fuente Mediana", "price": 50 }, { "id": "familiar", "name": "Fuente Familiar", "price": 60 }] },
+
+    { "id": "chicha-morada", "category": "bebidas", "name": "Chicha morada — Litro", "description": "", "price": 15, "image": "", "labels": [], "available": true },
+    { "id": "maracuya", "category": "bebidas", "name": "Maracuyá — Litro", "description": "", "price": 15, "image": "", "labels": [], "available": true },
+    { "id": "gaseosa-litro", "category": "bebidas", "name": "Gaseosa — Litro", "description": "", "price": 10, "image": "", "labels": [], "available": true },
+    { "id": "gaseosa-litro-medio", "category": "bebidas", "name": "Gaseosa — Litro ½", "description": "", "price": 12, "image": "", "labels": [], "available": true },
+    { "id": "cerveza-trujillo", "category": "bebidas", "name": "Cerveza Trujillo", "description": "", "price": 10, "image": "", "labels": [], "available": true },
+    { "id": "cerveza-cusquena", "category": "bebidas", "name": "Cerveza Cusqueña", "description": "", "price": 15, "image": "", "labels": [], "available": true },
+    { "id": "cerveza-trigo", "category": "bebidas", "name": "Cerveza Trigo", "description": "", "price": 15, "image": "", "labels": [], "available": true },
+    { "id": "cerveza-lata", "category": "bebidas", "name": "Cerveza Lata", "description": "", "price": 6, "image": "", "labels": [], "available": true }
   ]
 }

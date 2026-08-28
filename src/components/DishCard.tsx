@@ -1,6 +1,6 @@
 import React from "react";
 import type { Dish } from "../types";
-import { Plus, Minus, ShoppingBag, Send } from "lucide-react";
+import { Plus, Minus, ShoppingBag, Send, Layers } from "lucide-react";
 
 interface DishCardProps {
   dish: Dish;
@@ -9,6 +9,7 @@ interface DishCardProps {
   quantity: number;
   onAddToCart: () => void;
   onRemoveFromCart: () => void;
+  onOpenVariantModal?: (dish: Dish) => void;
   whatsappNumber: string;
 }
 
@@ -19,19 +20,46 @@ export const DishCard: React.FC<DishCardProps> = ({
   quantity,
   onAddToCart,
   onRemoveFromCart,
+  onOpenVariantModal,
   whatsappNumber,
 }) => {
+  const hasVariants = dish.variants && dish.variants.length > 0;
+
+  // Calcular rango de precios si tiene variantes
+  let minPrice = dish.price;
+  let maxPrice = dish.price;
+  if (hasVariants && dish.variants) {
+    const prices = dish.variants.map((v) => v.price);
+    minPrice = Math.min(...prices);
+    maxPrice = Math.max(...prices);
+  }
+
   const handleDirectOrder = () => {
-    const text = encodeURIComponent(
-      `¡Hola! Quisiera ordenar el plato *${dish.name}* (Precio: ${currency}${dish.price.toFixed(2)}) de su menú digital.`
-    );
+    let text = "";
+    if (hasVariants) {
+      text = encodeURIComponent(
+        `¡Hola! Quisiera información y pedir el plato *${dish.name}* (Rango: ${currency}${minPrice.toFixed(2)} - ${currency}${maxPrice.toFixed(2)}) de su menú digital.`
+      );
+    } else {
+      text = encodeURIComponent(
+        `¡Hola! Quisiera ordenar el plato *${dish.name}* (Precio: ${currency}${dish.price.toFixed(2)}) de su menú digital.`
+      );
+    }
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
+  };
+
+  const handleAddClick = () => {
+    if (hasVariants && onOpenVariantModal) {
+      onOpenVariantModal(dish);
+    } else {
+      onAddToCart();
+    }
   };
 
   const getBadgeClass = (label: string) => {
     const l = label.toLowerCase();
     if (l.includes("popular") || l.includes("estrella") || l.includes("favorito") || l.includes("recomendado")) return "badge-popular";
-    if (l.includes("fresco") || l.includes("2 en 1") || l.includes("gourmet")) return "badge-marine";
+    if (l.includes("fresco") || l.includes("2 en 1") || l.includes("gourmet") || l.includes("tamaño")) return "badge-marine";
     if (l.includes("picante") || l.includes("afrodisíaco")) return "badge-picante";
     return "badge-generic";
   };
@@ -42,21 +70,6 @@ export const DishCard: React.FC<DishCardProps> = ({
       {!dish.available && (
         <div className="dish-soldout-overlay">
           <span className="soldout-tag">Agotado</span>
-        </div>
-      )}
-
-      {/* Imagen del plato opcional */}
-      {dish.image && (
-        <div className="dish-image-container">
-          <img
-            src={dish.image}
-            alt={dish.name}
-            className="dish-image"
-            onError={(e) => {
-              (e.target as HTMLElement).parentElement!.style.display = "none";
-            }}
-          />
-          <div className="dish-image-overlay"></div>
         </div>
       )}
 
@@ -75,20 +88,54 @@ export const DishCard: React.FC<DishCardProps> = ({
               </div>
             )}
           </div>
-          <span className="dish-price">
-            {currency}
-            {dish.price.toFixed(2)}
-          </span>
+
+          <div className="dish-price-wrapper">
+            {hasVariants ? (
+              <div className="dish-price-range">
+                <span className="price-label-prefix">Desde</span>
+                <span className="dish-price">
+                  {currency}
+                  {minPrice.toFixed(2)}
+                </span>
+              </div>
+            ) : (
+              <span className="dish-price">
+                {currency}
+                {dish.price.toFixed(2)}
+              </span>
+            )}
+          </div>
         </div>
+
         <p className="dish-description">{dish.description}</p>
+
+        {/* Precios por tamaño visibles en la carta */}
+        {hasVariants && dish.variants && (
+          <div className="dish-variants-preview">
+            <span className="variants-preview-title">Precios por tamaño:</span>
+            <div className="variants-pills-row">
+              {dish.variants.map((v) => (
+                <span key={v.id} className="variant-pill-item">
+                  <strong>{v.name.replace("Fuente ", "")}:</strong> {currency}{v.price.toFixed(0)}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Sección de acciones */}
         <div className="dish-action-row">
           {dish.available && (
             <>
               {enableCart ? (
-                quantity === 0 ? (
-                  <button onClick={onAddToCart} className="add-to-cart-btn">
+                hasVariants ? (
+                  <button onClick={handleAddClick} className="add-to-cart-btn has-variant-btn">
+                    <Layers size={16} />
+                    <span>Elegir Tamaño / Agregar</span>
+                    {quantity > 0 && <span className="dish-added-indicator">({quantity} en pedido)</span>}
+                  </button>
+                ) : quantity === 0 ? (
+                  <button onClick={handleAddClick} className="add-to-cart-btn">
                     <ShoppingBag size={16} />
                     <span>Añadir al Pedido</span>
                   </button>
