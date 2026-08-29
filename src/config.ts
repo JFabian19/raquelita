@@ -13,7 +13,7 @@ export const MENU_CONFIG: MenuConfig = {
     socials: {
       instagram: "https://instagram.com/cevicheriaraquelita",
       facebook: "https://facebook.com/cevicheriaraquelita",
-      whatsapp: "https://wa.me/51974475523?text=Hola%20Cevicher%C3%ADa%20Raquelita,%20quisiera%20hacer%20un%20pedido%20delivery",
+      whatsapp: "https://wa.me/51942286744?text=Hola%20Cevicher%C3%ADa%20Raquelita,%20quisiera%20hacer%20un%20pedido%20delivery",
       tiktok: "https://tiktok.com/@cevicheriaraquelita"
     }
   },
@@ -32,7 +32,7 @@ export const MENU_CONFIG: MenuConfig = {
 
   // CONFIGURACIÓN DE LA TIENDA / PEDIDOS
   store: {
-    whatsappNumber: "51974475523", // Número de WhatsApp para delivery y pedidos directos
+    whatsappNumber: "51942286744", // Número de WhatsApp para delivery y pedidos directos
     currency: "S/",                // Soles peruanos
     enableCart: true,              // Carrito interactivo
     tax: 0.00,
