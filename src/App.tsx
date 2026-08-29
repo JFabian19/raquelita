@@ -427,7 +427,7 @@ export const App: React.FC = () => {
                 rel="noopener noreferrer"
                 className="footer-wa-link"
               >
-                974 475 523
+                942 286 744
               </a>
             </div>
 
