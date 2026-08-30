@@ -1,6 +1,6 @@
 import React from "react";
 import type { Dish } from "../types";
-import { Plus, Minus, ShoppingBag, Send, Layers } from "lucide-react";
+import { Plus, Minus, ShoppingBag, Send, Layers, Fish } from "lucide-react";
 
 interface DishCardProps {
   dish: Dish;
@@ -23,6 +23,62 @@ export const DishCard: React.FC<DishCardProps> = ({
   onOpenVariantModal,
   whatsappNumber,
 }) => {
+  const referenceImages: Record<string, string> = {
+    "leche-de-tigre": "leche-de-tigre.webp",
+    "ceviche-mixto": "ceviche-mixto.webp",
+    "ceviche-simple": "ceviche-de-pescado-del-dia.webp",
+    "ceviche-salsa-rocoto": "ceviche-de-corvina.webp",
+    "ceviche-carretillero": "duo-marino-ceviche-chicharron-de-pescado.webp",
+    "chicharron-pescado": "chicharron-de-pescado.webp",
+    "chicharron-mixto": "chicharron-mixto.webp",
+    "jalea-mixta": "jalea-mixta.webp",
+    "cabrilla-frita": "cabrilla-frita.webp",
+    "chita-frita": "chita-frita-menu.webp",
+    "sudado-trambollo": "sudado-de-trambollo-menu.webp",
+    "sudado-congrio": "sudado-de-congrio-menu.webp",
+    "sudado-cabrilla": "sudado-de-cabrilla.webp",
+    "sudado-tollo": "sudado-de-tollo-menu.webp",
+    "guisada": "guisada-menu.webp",
+    "chilcano": "chilcano-menu.webp",
+    "parihuela": "parihuela-de-cabrilla.webp",
+    "duo-marino": "duo-marino-ceviche-chicharron-de-pescado.webp",
+    "trio-marino": "trio-marino-ceviche-chicharron-arroz-con-mariscos.webp",
+    "arroz-marisco": "arroz-con-mariscos.webp",
+    "chaufa-marisco": "chaufa-de-mariscos.webp",
+    "fuente-ceviche-mixto": "fuente-mediana-ceviche-mixto.webp",
+    "fuente-chicharron-pescado": "chicharron-de-pescado.webp",
+    "fuente-jalea-mixta": "fuente-mediana-jalea-mixta.webp",
+    "fuente-sudado-trambollo": "sudado-de-trambollo-menu.webp",
+    "fuente-sudado-cabrilla": "fuente-grande-sudado-de-pescado.webp",
+    "fuente-sudado-tollo": "sudado-de-tollo-menu.webp",
+    "fuente-parihuela": "fuente-grande-parihuelas.webp",
+    "fuente-duo-familiar": "duo-marino-ceviche-chaufa-de-mariscos.webp",
+    "fuente-trio-familiar": "trio-marino-ceviche-chicharron-chaufa-con-mariscos.webp",
+    "fuente-ronda-marina": "jalea-mixta.webp",
+    "fuente-arroz-marisco": "fuente-grande-arroz-con-mariscos.webp",
+    "fuente-chaufa-marisco": "fuente-grande-chaufa-de-mariscos.webp",
+    "chicha-morada": "chicha-morada-de-maiz-1-lt.webp",
+    "maracuya": "maracuya-menu.webp",
+    "gaseosa-litro": "gaseosa-descartable.webp",
+    "gaseosa-litro-medio": "gaseosa-descartable.webp",
+    "cerveza-trujillo": "cerveza-trujillo-menu.webp",
+    "cerveza-cusquena": "cerveza-cusquena-negra.webp",
+    "cerveza-trigo": "cerveza-cusquena-trigo.webp",
+    "cerveza-lata": "cerveza-lata-menu.webp",
+  };
+
+  const referenceImage = dish.image || (referenceImages[dish.id]
+    ? `/images/referencias/${referenceImages[dish.id]}`
+    : "");
+
+  const editorialLabels = dish.labels?.length
+    ? dish.labels
+    : dish.id.includes("ceviche") || dish.id === "leche-de-tigre"
+      ? ["Pescado fresco"]
+      : dish.id.includes("trio") || dish.id.includes("duo") || dish.id.includes("ronda")
+        ? ["Favorito"]
+        : [];
+
   const hasVariants = dish.variants && dish.variants.length > 0;
 
   // Calcular rango de precios si tiene variantes
@@ -73,20 +129,33 @@ export const DishCard: React.FC<DishCardProps> = ({
         </div>
       )}
 
+      <div className={`dish-image-container ${!referenceImage ? "dish-image-placeholder" : ""}`}>
+        {referenceImage ? (
+          <img className="dish-image" src={referenceImage} alt={dish.name} loading="lazy" />
+        ) : (
+          <div className="dish-placeholder-mark" aria-label="Fotografía pendiente">
+            <img src="/images/logo.webp" alt="" />
+            <span>Foto próximamente</span>
+          </div>
+        )}
+        <div className="dish-image-shade" />
+        {editorialLabels.length > 0 && (
+          <div className="dish-image-badges">
+            {editorialLabels.map((label, idx) => (
+              <span key={idx} className={`image-badge ${getBadgeClass(label)}`}>
+                <Fish size={11} /> {label}
+              </span>
+            ))}
+          </div>
+        )}
+        <span className="reference-photo-note">Foto referencial</span>
+      </div>
+
       {/* Detalles del plato */}
       <div className="dish-info">
         <div className="dish-header">
           <div className="dish-title-area">
             <h3 className="dish-name">{dish.name}</h3>
-            {dish.labels && dish.labels.length > 0 && (
-              <div className="dish-badges-inline">
-                {dish.labels.map((label, idx) => (
-                  <span key={idx} className={`badge ${getBadgeClass(label)}`}>
-                    {label}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
 
           <div className="dish-price-wrapper">

@@ -7,7 +7,7 @@ import { CategoryNav } from "./components/CategoryNav";
 import { DishCard } from "./components/DishCard";
 import { CartDrawer } from "./components/CartDrawer";
 import { VariantSelectModal } from "./components/VariantSelectModal";
-import { ShoppingCart, Image as ImageIcon, Sparkles } from "lucide-react";
+import { ShoppingCart, Fish, UtensilsCrossed, GlassWater } from "lucide-react";
 
 export const App: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -335,36 +335,20 @@ export const App: React.FC = () => {
                   data-category-id={category.id}
                   className="category-section"
                 >
-                  {/* Banner de Categoría */}
-                  <div className="category-banner">
-                    {category.image ? (
-                      <>
-                        <img
-                          className="category-banner-img"
-                          src={category.image}
-                          alt={category.name}
-                          onError={(e) => {
-                            (e.target as HTMLElement).style.display = "none";
-                          }}
-                        />
-                        <div className="category-banner-overlay"></div>
-                      </>
-                    ) : (
-                      <div className="category-placeholder-backdrop">
-                        <div className="category-placeholder-grid-pattern"></div>
-                        <div className="category-placeholder-badge">
-                          <ImageIcon size={15} />
-                          <span>Cevichería Raquelita</span>
-                        </div>
-                      </div>
-                    )}
-                    <div className="category-banner-content">
-                      <div className="category-badge-chip">
-                        <Sparkles size={13} />
-                        <span>Categoría</span>
-                      </div>
+                  {/* Encabezado editorial de categoría */}
+                  <div className="category-heading">
+                    <div className="category-heading-icon" aria-hidden="true">
+                      {category.id === "bebidas" ? <GlassWater size={22} /> :
+                        category.id === "fuente-familiar" ? <UtensilsCrossed size={22} /> : <Fish size={22} />}
+                    </div>
+                    <div>
+                      <span>Nuestra carta</span>
                       <h2>{category.name}</h2>
-                      <p>{category.description}</p>
+                      <p>{category.description || (category.id === "bebidas"
+                        ? "Para acompañar y refrescar tu mesa."
+                        : category.id === "fuente-familiar"
+                          ? "Porciones generosas para compartir."
+                          : "Sabor piurano preparado al momento.")}</p>
                     </div>
                   </div>
 

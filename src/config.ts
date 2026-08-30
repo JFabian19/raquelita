@@ -20,13 +20,13 @@ export const MENU_CONFIG: MenuConfig = {
 
   // PALETA DE COLORES Y DISEÑO
   theme: {
-    primaryColor: "#0284c7",       // Azul océano vibrante
-    secondaryColor: "#f97316",     // Naranja cálido marino / Ají limo
-    bgColor: "#090f1d",            // Fondo azul marino noche profundo y elegante
-    cardBgColor: "#101d36",        // Tarjetas azul océano con efecto glassmorphism
-    textColor: "#f8fafc",          // Blanco nítido de alta legibilidad
-    textMutedColor: "#94a3b8",     // Azul grisáceo suave
-    borderRadius: "20px",          // Bordes curvos modernos y estilizados
+    primaryColor: "#087cad",       // Azul mar del logotipo
+    secondaryColor: "#f28a23",     // Naranja cálido del logotipo
+    bgColor: "#f7fbfd",            // Fondo blanco azulado, limpio y gastronómico
+    cardBgColor: "#ffffff",        // Tarjetas blancas como la referencia
+    textColor: "#102b3a",          // Azul tinta para máxima legibilidad
+    textMutedColor: "#617985",     // Gris azulado suave
+    borderRadius: "16px",          // Curvas compactas y modernas
     fontFamily: "'Outfit', sans-serif" // Tipografía moderna Google Fonts
   },
 

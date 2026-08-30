@@ -319,13 +319,16 @@ body {
   }
 
   .logo-card-wrapper {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .logo-card {
-    width: 76px;
-    height: 76px;
-    padding: 4px;
+    width: clamp(108px, 30vw, 126px);
+    height: clamp(108px, 30vw, 126px);
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 12px 32px rgba(0, 29, 43, 0.42), 0 0 24px rgba(8, 124, 173, 0.35);
   }
 
   .hero-content h1 {
@@ -1801,4 +1804,449 @@ body {
   background: #22c55e;
   color: #ffffff;
   transform: scale(1.05);
+}
+
+/* ==========================================================================
+   CARTA CLARA — SISTEMA VISUAL RAQUELITA
+   Inspirado en el formato editorial de la referencia compartida.
+   ========================================================================== */
+body {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(8, 124, 173, 0.05), transparent 22rem),
+    linear-gradient(180deg, #ffffff 0%, #f7fbfd 100%);
+}
+
+.loader-wrapper {
+  background: #ffffff;
+}
+
+.loader-name { color: var(--text-color); }
+
+.category-nav-wrapper {
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom-color: #dcebf1;
+  box-shadow: 0 7px 24px rgba(16, 43, 58, 0.08);
+}
+
+.category-nav-slider {
+  justify-content: center;
+}
+
+.category-tab {
+  color: #55717e;
+  background: #f4f9fb;
+  border-color: #dcebf1;
+}
+
+.category-tab:hover {
+  color: var(--primary-color);
+  background: #eaf6fb;
+}
+
+.category-tab.active {
+  color: #ffffff;
+  box-shadow: 0 5px 14px rgba(8, 124, 173, 0.24);
+}
+
+.menu-sections-container {
+  padding-top: 34px;
+}
+
+.category-section {
+  margin-bottom: 62px;
+}
+
+.category-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 0 2px 13px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #dbe9ef;
+}
+
+.category-heading-icon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: linear-gradient(145deg, #1d97c4, #0675a3);
+  border-radius: 13px 13px 13px 4px;
+  box-shadow: 0 6px 14px rgba(8, 124, 173, 0.2);
+}
+
+.category-heading span {
+  display: block;
+  color: var(--secondary-color);
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.category-heading h2 {
+  color: #0d4f6b;
+  font-size: 1.55rem;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.category-heading p {
+  color: var(--text-muted-color);
+  font-size: 0.84rem;
+  line-height: 1.35;
+  margin-top: 4px;
+}
+
+.dishes-grid {
+  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+  gap: 18px;
+}
+
+.dish-card {
+  padding: 0;
+  background: #ffffff;
+  border: 1px solid #d9e8ee;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(22, 72, 92, 0.09);
+}
+
+.dish-card:hover {
+  transform: translateY(-3px);
+  border-color: #a9d5e5;
+  box-shadow: 0 15px 34px rgba(22, 72, 92, 0.15);
+}
+
+.dish-image-container {
+  height: 205px;
+  margin: 0;
+  border-radius: 15px 15px 0 0;
+  background: #eaf5f8;
+}
+
+.dish-image {
+  display: block;
+}
+
+.dish-image-placeholder {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.88), rgba(225,242,248,.9)),
+    repeating-linear-gradient(45deg, transparent 0 12px, rgba(8,124,173,.04) 12px 24px);
+}
+
+.dish-placeholder-mark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #63818e;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.dish-placeholder-mark img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  box-shadow: 0 5px 16px rgba(8, 124, 173, .18);
+  opacity: .82;
+}
+
+.dish-image-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(2, 44, 64, 0.04) 45%, rgba(2, 44, 64, 0.28) 100%);
+}
+
+.dish-image-badges {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.image-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--primary-color);
+  box-shadow: 0 3px 9px rgba(0, 54, 80, .2);
+  font-size: .65rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.image-badge.badge-popular { background: var(--secondary-color); color: #ffffff; }
+.image-badge.badge-picante { background: #dc3f39; }
+
+.reference-photo-note {
+  position: absolute;
+  z-index: 2;
+  right: 7px;
+  bottom: 6px;
+  padding: 2px 6px;
+  color: rgba(255,255,255,.96);
+  background: rgba(7, 36, 49, .55);
+  border-radius: 4px;
+  font-size: .55rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.dish-info {
+  padding: 14px;
+}
+
+.dish-header {
+  margin-bottom: 7px;
+}
+
+.dish-name {
+  color: #133d50;
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.dish-price {
+  color: #0678aa;
+  font-size: 1.04rem;
+  font-weight: 800;
+}
+
+.dish-description {
+  color: #637985;
+  min-height: 3.7em;
+  margin-bottom: 13px;
+  font-size: .81rem;
+  line-height: 1.45;
+}
+
+.dish-variants-preview {
+  margin: 0 0 12px;
+  padding: 9px;
+  background: #f1f9fc;
+  border-color: #bcdde9;
+  border-radius: 10px;
+}
+
+.variants-preview-title {
+  color: #4f7585;
+  font-size: .65rem;
+}
+
+.variant-pill-item {
+  color: #315565;
+  background: #ffffff;
+  border-color: #d5e8ef;
+  font-size: .7rem;
+}
+
+.variant-pill-item strong { color: #087cad; }
+
+.price-label-prefix { color: #78909a; }
+
+.add-to-cart-btn,
+.add-to-cart-btn.has-variant-btn {
+  min-height: 42px;
+  padding: 10px 12px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0781b4, #006d9b);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 5px 12px rgba(8, 124, 173, .18);
+}
+
+.add-to-cart-btn:hover,
+.add-to-cart-btn.has-variant-btn:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, #f39435, #e67512);
+}
+
+.dish-qty-control {
+  background: #f1f9fc;
+  border-color: #83c2d9;
+  border-radius: 10px;
+}
+
+.qty-num { color: #075f83; }
+
+.restaurant-footer {
+  background: #073c55;
+}
+
+@media (max-width: 639px) {
+  html { scroll-padding-top: 72px; }
+
+  .category-nav-slider {
+    justify-content: flex-start;
+    padding: 10px 12px;
+  }
+
+  .category-tab {
+    padding: 8px 14px;
+    font-size: .8rem;
+  }
+
+  .menu-sections-container {
+    padding: 25px 10px 105px;
+  }
+
+  .category-section {
+    margin-bottom: 45px;
+    scroll-margin-top: 100px;
+  }
+
+  .category-heading {
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 11px;
+  }
+
+  .category-heading-icon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+    border-radius: 10px 10px 10px 3px;
+  }
+
+  .category-heading-icon svg { width: 18px; height: 18px; }
+  .category-heading h2 { font-size: 1.17rem; }
+  .category-heading p { font-size: .72rem; }
+  .category-heading span { font-size: .58rem; }
+
+  .dishes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .dish-card { border-radius: 12px; }
+  .dish-image-container { height: clamp(128px, 39vw, 168px); border-radius: 11px 11px 0 0; }
+  .dish-info { padding: 10px; }
+  .dish-header { display: block; }
+  .dish-name { font-size: .82rem; min-height: 2.4em; }
+  .dish-price-wrapper { margin-top: 5px; }
+  .dish-price { font-size: .86rem; }
+  .price-label-prefix { font-size: .57rem; }
+  .dish-description {
+    min-height: 5.2em;
+    margin-bottom: 9px;
+    font-size: .68rem;
+    -webkit-line-clamp: 4;
+  }
+  .dish-image-badges { top: 6px; left: 6px; }
+  .image-badge { padding: 4px 6px; font-size: .55rem; }
+  .image-badge svg { width: 9px; height: 9px; }
+  .reference-photo-note { font-size: .48rem; }
+  .dish-variants-preview { padding: 7px; }
+  .variants-pills-row { gap: 4px; }
+  .variant-pill-item { padding: 3px 5px; font-size: .6rem; }
+  .add-to-cart-btn,
+  .add-to-cart-btn.has-variant-btn {
+    min-height: 35px;
+    padding: 7px 6px;
+    gap: 4px;
+    font-size: .68rem;
+  }
+  .add-to-cart-btn svg { width: 13px; height: 13px; }
+  .dish-added-indicator { display: none; }
+  .qty-btn { padding: 8px 10px; }
+  .qty-num { font-size: .78rem; }
+}
+
+@media (max-width: 340px) {
+  .dishes-grid { grid-template-columns: 1fr; }
+  .dish-image-container { height: 205px; }
+  .dish-name, .dish-description { min-height: auto; }
+}
+
+/* Carrito y selector de tamaños alineados con la carta clara. */
+.cart-drawer,
+.variant-modal-container {
+  color: var(--text-color);
+  background: #ffffff;
+  border-color: #cfe3eb;
+  box-shadow: 0 20px 55px rgba(7, 48, 66, .22);
+}
+
+.cart-drawer-header,
+.variant-modal-header {
+  background: #f4fafc;
+  border-color: #dcebf1;
+}
+
+.cart-drawer-title-area h3,
+.variant-modal-title,
+.variant-name,
+.cart-item-name,
+.cart-summary-line.total {
+  color: #133d50;
+}
+
+.close-drawer-btn,
+.variant-modal-close-btn {
+  color: #55717e;
+  background: #e8f4f8;
+  border-color: #d2e6ed;
+}
+
+.cart-item,
+.variant-card-option,
+.variant-qty-controls {
+  color: #315565;
+  background: #f7fbfd;
+  border-color: #d8e9ef;
+}
+
+.variant-card-option:hover,
+.variant-card-option.selected {
+  background: #edf8fc;
+  border-color: #69b8d4;
+}
+
+.variant-card-price,
+.cart-item-price,
+.variant-qty-number {
+  color: #087cad;
+}
+
+.variant-section-label,
+.variant-modal-dish-desc,
+.variant-section-hint,
+.variant-desc,
+.empty-cart-state,
+.cart-item-unit-note {
+  color: #637985;
+}
+
+.variant-modal-footer,
+.cart-drawer-footer,
+.cart-form-container {
+  background: #f7fbfd;
+  border-color: #dcebf1;
+}
+
+.variant-qty-btn,
+.cart-item-btn {
+  color: #087cad;
+  background: #ffffff;
+  border-color: #cfe3eb;
 }
